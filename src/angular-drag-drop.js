@@ -176,12 +176,18 @@ mod.directive('dropContainer', ['$document', '$parse', '$window', 'dragContext',
             var onDragLeave = $attrs.onDragLeave ? $parse($attrs.onDragLeave) : null;
             var onDrop = $attrs.onDrop ? $parse($attrs.onDrop) : null;
 
-            $attrs.$addClass('drop-container');
+            $scope.$watch($attrs.dropContainer, function (dropContainer) {
+                if (dropContainer === false) {
+                    return;
+                }
 
-            $element.on('dragover', handleDragOver);
-            $element.on('dragenter', handleDragEnter);
-            $element.on('dragleave', handleDragLeave);
-            $element.on('drop', handleDrop);
+                $attrs.$addClass('drop-container');
+
+                $element.on('dragover', handleDragOver);
+                $element.on('dragenter', handleDragEnter);
+                $element.on('dragleave', handleDragLeave);
+                $element.on('drop', handleDrop);
+            });
 
             function handleDragEnter(e) {
                 if (dragContext.lastTarget && dragContext.lastTarget !== $element) {

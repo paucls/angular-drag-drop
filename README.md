@@ -89,6 +89,7 @@ Define a DOM element that will accept draggable elements that match pass an opti
 
 Attribute | Required? | Description
 ----------|-----------|------------
+`drag-container` | No | Defines when the drop action is allowed or not for the container. Can be true or false.
 `drop-accepts` | No | Define a call to check if the data being dragged is allowed
 
 The following callbacks are optional.
