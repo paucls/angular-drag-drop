@@ -9,6 +9,6 @@ lib-cov
 *.swp
 *.swo
 .DS_Store
-
+.idea
 node_modules
 
